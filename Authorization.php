@@ -3,7 +3,6 @@
 
 class Authorization
 {
-    private $_issetsession;
     private $_id;
     private $_nickname;
     private $_password;

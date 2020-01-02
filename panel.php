@@ -25,15 +25,7 @@
 
                 <ul class="nav pull-right">
                     <br />
-                    <?php
-                        session_start();
-                        if(isset($_SESSION['logged'])){
-                    	    print_r('Jesteś zalogowany jako: '.$_SESSION['user_id']);
-                    	}
-                    	else{
-                    	    echo "Nie jesteś zalogowany";
-                    	}
-                    ?>
+                    <?php include ('users/accountInfo.php'); ?>
                         </ul>
                     </li>
                 </ul>

@@ -1,8 +1,8 @@
 <?php
-    require_once('config.php');
+    require_once 'config.php';
     global $pdo;
     session_start();
-        if(isset($_SESSION['logged'])){
+        if(isset($_SESSION['logged']) && $_SESSION['active'] != 0){
             $typ = $_POST["typ"];
             $datap = $_POST["datap"];
             $datak = $_POST["datak"];
