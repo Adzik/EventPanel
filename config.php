@@ -1,16 +1,20 @@
 <?php
 //Zmienne do bazy danych
-	$login = '';
-	$haslo = '';
-	$host = 'localhost';
-	$dbname = 'dsdobot';
-	try
-	{
-		$pdo = new PDO('mysql:host='.$host.';dbname='.$dbname, $login, $haslo, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+$db["Host"] = "localhost";
+$db["User"] = "wixa";
+$db["Password"] = "korba";
+$db["Name"] = "dsdobot";
+
+function connect() {
+	global $pdo;
+	global $db;
+	try {
+		$pdo = new PDO('mysql:host='.$db["Host"].';dbname='.$db["Name"], $db["User"], $db["Password"]);
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
-	catch (PDOException $e)
+	catch(PDOException $e)
 	{
-		echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+		echo $e->getMessage();
 	}
-?>
+}
+

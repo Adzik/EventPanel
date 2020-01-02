@@ -1,30 +1,23 @@
 <?php
 	include('config.php');
-	//Logowanie
-		if(isset($_POST['wyslano']))
-		{
-			$nick = trim($_POST['login']);
-			$password = trim($_POST['haslo']);
-			$password = sha1($password);
-      		$aktywny = 1;
-			//Logowanie bardziej
-			$stmt = $pdo ->prepare("SELECT * FROM users WHERE Nick=:Nick AND Password=:Password AND Aktywny=:Aktywny");
-			$stmt -> bindValue(":Nick", $nick, PDO::PARAM_STR);
-			$stmt -> bindValue(":Password", $password, PDO::PARAM_STR);
-            $stmt -> bindValue(":Aktywny", $aktywny, PDO::PARAM_STR);
-			$stmt -> execute();
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
-			if($stmt->rowCount()!=0)
-			{
-				echo "Zalogowałeś się!";
+		if(isset($_POST['wyslano'])) {
+			require_once 'config.php';
+			connect();
+			require_once 'Authorization.php';
+
+			$user = $_POST['login'];
+			$password = $_POST['haslo'];
+
+			$log = new Authorization();
+			$log->setUser($user);
+			$log->setPassword($password);
+
+			if (!$log->validateUser()) {
+				echo '<p class="error">Wprowadź login i hasło!</p>';
+			} else if (!$log->Login()) {
+				echo '<p class="error">Nieprawidłowy login i/lub hasło!</p>';
+			} else {
 				session_start();
-				$_SESSION['logged'] = true;
-				$_SESSION['user_id'] = $row['Nick'];
-				header("Location: panel.php");
-			}
-			else
-			{
-				echo 'Podałeś zły login lub hasło, lub konto jest dezaktywowane';
+				header('Location: panel.php');
 			}
 		}
-?>

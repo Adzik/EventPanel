@@ -1,8 +1,8 @@
 <?php
-include('../config.php');
-
-try
-{
+require_once('../config.php');
+require_once ('../Authorization.php');
+connect();
+    global $pdo;
     $stmt = $pdo->query('SELECT * FROM users');
     echo '<table class="table table-striped table-bordered table-condensed">
                     <thead>
@@ -25,9 +25,3 @@ try
     }
     echo '</tbody>
                         </table>';
-
-}
-catch (PDOException $e)
-{
-    echo 'Wystąpił błąd'. $e -> getMessage();
-}

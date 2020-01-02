@@ -1,5 +1,6 @@
 <?php
-    include('config.php');
+    require_once('config.php');
+    global $pdo;
     session_start();
         if(isset($_SESSION['logged'])){
             $typ = $_POST["typ"];
