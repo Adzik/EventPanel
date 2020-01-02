@@ -3,7 +3,7 @@
     include('../config.php');
     connect();
     global $pdo;
-    if(isset($_SESSION['logged']))
+    if(isset($_SESSION['logged']) && $_SESSION['active'] == 1)
     {
         $stmt = $pdo->prepare('SELECT * FROM users WHERE ID = :id');
         $stmt -> bindValue(":id", $id, PDO::PARAM_STR);

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -307,9 +308,9 @@
             <h2>Edycja</h2>
         </div>
         <?php
-            if(isset($_SESSION['logged']))
+            if(isset($_SESSION['logged']) && $_SESSION['active'] == 1)
             {
-                ob_start();
+
                 $rowCount = false;
                 $id = $_GET['id'];
                 $task = $_GET['task'];
@@ -327,7 +328,7 @@
             }
             else
             {
-                header('Location: ../index.php');
+                include('noAccess.html');
             }
         ?>
         <form action="users.php"><input type="submit" value="Powrót" /></form>

@@ -1,8 +1,8 @@
 <?php
     require_once('../config.php');
+    connect();
     global $pdo;
-    session_start();
-    if (isset($_SESSION['logged'])) {
+    if (isset($_SESSION['logged']) && $_SESSION['active'] == 1) {
         try {
             $stmt = $pdo->prepare('DELETE FROM users WHERE ID = :id');
             $stmt->bindValue(":id", $id, PDO::PARAM_STR);

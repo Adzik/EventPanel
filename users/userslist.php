@@ -2,7 +2,7 @@
 require_once('../config.php');
 require_once ('../Authorization.php');
 connect();
-if (isset($_SESSION['logged']))
+if (isset($_SESSION['logged']) && $_SESSION['active'] == 1)
 {
     global $pdo;
     $stmt = $pdo->query('SELECT * FROM users');
