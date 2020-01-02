@@ -307,22 +307,28 @@
             <h2>Edycja</h2>
         </div>
         <?php
-        ob_start();
-        $rowCount = false;
-        $id = $_GET['id'];
-        $task = $_GET['task'];
-        switch($task)
-        {
-            case 'edit':
-                include('edit.php');
-                break;
-            case 'usun':
-                include('delete.php');
-                break;
-            default:
-                break;
-        }
-
+            if(isset($_SESSION['logged']))
+            {
+                ob_start();
+                $rowCount = false;
+                $id = $_GET['id'];
+                $task = $_GET['task'];
+                switch($task)
+                {
+                    case 'edit':
+                        include('edit.php');
+                        break;
+                    case 'usun':
+                        include('delete.php');
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                header('Location: ../index.php');
+            }
         ?>
         <form action="users.php"><input type="submit" value="Powrót" /></form>
     </div>

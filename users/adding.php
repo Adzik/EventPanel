@@ -1,38 +1,49 @@
 <?php
-include('../config.php');
-session_start();
-if(isset($_SESSION['logged'])){
+    require_once('../config.php');
+    require_once ('../Authorization.php');
+    connect();
+    session_start();
+    global $pdo;
+    if(isset($_SESSION['logged']) && $_SESSION['active'] == 1)
+    {
         $nickname = $_POST['nickname'];
         $password = $_POST['password'];
         $password2 = $_POST['confirmpassword'];
         $group = $_POST['group'];
 
-        if ($password == $password2)
+        $register = new Authorization();
+        $register -> setUser($nickname);
+        $register -> setPassword($password);
+        $register -> setSecondPassword($password2);
+        $register -> setGroup($group);
+
+        if ($register->checkPasswords() && $register->validateUser())
         {
-            $password = sha1($password);
-            try {
-                $pdo->exec('INSERT INTO `users`(`Nick`, `Password`, `Aktywny`) VALUES (
-            \'' . $nickname . '\',
-            \'' . $password . '\',
-            \'' . $group . '\')');
-            }
-            catch (PDOException $e)
+            if($register->RegisterUser())
             {
-                echo 'Wystąpił błąd' . $e ->getMessage();
+                $_SESSION['success'] = 0;
+                header('Location: adduser.php');
             }
-            $_SESSION['success'] = 0;
-            header('Location: adduser.php');
+            else
+            {
+                $_SESSION['success'] = 1;
+                header('Location: adduser.php');
+            }
+
         }
-        else{
-            $_SESSION['success'] = 3;
-            header('Location: adduser.php');
+        else
+            {
+                $_SESSION['success'] = 3;
+                header('Location: adduser.php');
         }
 
 
-}
-else
-{
-    $_SESSION['success'] = 1;
-    header('Location: adduser.php');
-}
+
+
+
+    }
+    else
+    {
+        header('Location: ../index.php');
+    }
 

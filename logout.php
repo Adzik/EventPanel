@@ -1,10 +1,5 @@
 <?php
-    session_start();
-    if(isset($_SESSION['logged'])){
-    session_destroy();
-    header("Location: index.php");
-    }
-    else{
-    header("Location: index.php");
-    }
-?>
+    require_once ('Authorization.php');
+    $logout = new Authorization();
+    $logout -> LogOut();
+    header('Location: index.php');

@@ -31,7 +31,7 @@
                     print_r('Jesteś zalogowany jako: '.$_SESSION['user_id']);
                 }
                 else{
-                    echo "Nie jesteś zalogowany";
+                    header('Location: ../index.php');
                 }
                 ?>
             </ul>
@@ -105,31 +105,27 @@
                             if($_SESSION['success'] == 3)
                             {
                                 echo ' <div id="div3" class="alert alert-danger" role="alert">
-                                        Podane hasła nie są takie same!
+                                        Brak podanej nazwy użytkownika lub podane hasła nie są takie same!
                             </div>';
                             }
                             if($_SESSION['success'] == 1)
                             {
                                 echo ' <div id="div3" class="alert alert-danger" role="alert">
-                                        Wystąpił błąd przy użytkownika
+                                        Wybrany nick jest już zajęty!
                             </div>';
                             }
                             unset($_SESSION['success']);
+
+                            if($_SESSION['active'] == 1)
+                            {
+                                include('addUserForm.html');
+                            }
+                            else
+                            {
+                                include('noAccess.html');
+                            }
                             ?>
-                            <form action="adding.php" method="POST">
-                                <h6>Nazwa użytkownika</h6>
-                            <input type="text" name="nickname" /> <br />
-                                <h6>Hasło</h6>
-                                <input type="password" name="password" /><br />
-                                <h6>Powtórz hasło</h6>
-                                <input type="password" name="confirmpassword"/> <br />
-                                <h6>Grupa</h6>
-                                <select name="group">
-                                    <option>0</option>
-                                    <option>1</option>
-                                </select><br />
-                                <input type="submit" value="Dodaj" />
-                            </form>
+
 
                         </div>
                     </div>

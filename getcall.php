@@ -1,5 +1,6 @@
 <?php
-include('config.php');
+require_once('config.php');
+global $pdo;
 try
 {
     $stmt = $pdo -> prepare("SELECT * FROM events");

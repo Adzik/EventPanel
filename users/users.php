@@ -117,13 +117,29 @@
 
                     <div class="module">
                         <div class="module-head">
-                            <h3>Lista eventów</h3>
+                            <h3>Lista użytkowników</h3>
                         </div>
                         <div class="module-body">
-                            <?php include('userslist.php');?>
-                                <form action="adduser.php">
-                                <center><input type="submit" value="Dodaj nowego użytkownika" /></center>
-                                </form>
+                            <?php
+                            if(isset($_SESSION['logged'])) {
+                                if ($_SESSION['active'] == 1)
+                                {
+                                    include('userslist.php');
+                                    echo '<form action="adduser.php">
+                                <div style="text-align: center;"><input type="submit" value="Dodaj nowego użytkownika" /></div>
+                                </form>';
+                                }
+                                else
+                                {
+                                    include('noAccess.html');
+                                }
+
+                            }
+                            else{
+                                header('Location: ../index.php');
+                            }
+                            ?>
+
                         </div>
                     </div>
 

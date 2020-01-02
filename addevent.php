@@ -31,7 +31,7 @@
                                         	    print_r('Jesteś zalogowany jako: '.$_SESSION['user_id']);
                                         	}
                                         	else{
-                                        	    echo "Nie jesteś zalogowany";
+                                        	    header('Location: index.php');
                                         	}
                                         ?>
                         </ul>

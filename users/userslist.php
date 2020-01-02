@@ -2,6 +2,8 @@
 require_once('../config.php');
 require_once ('../Authorization.php');
 connect();
+if (isset($_SESSION['logged']))
+{
     global $pdo;
     $stmt = $pdo->query('SELECT * FROM users');
     echo '<table class="table table-striped table-bordered table-condensed">
@@ -25,3 +27,8 @@ connect();
     }
     echo '</tbody>
                         </table>';
+}
+else{
+    header ('Location: ../index.php');
+}
+
