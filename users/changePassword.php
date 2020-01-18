@@ -4,10 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSDOBOT</title>
-    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link type="text/css" href="css/theme.css" rel="stylesheet">
-    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="../css/theme.css" rel="stylesheet">
+    <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 </head>
 <body>
@@ -19,19 +19,19 @@
                 <i class="icon-reorder shaded"></i>
             </a>
 
-            <a class="brand" href="index.php">
+            <a class="brand" href="../index.php">
                 DSDOBOT
             </a>
 
-                <ul class="nav pull-right">
-                    <br />
-                    <?php include ('users/accountInfo.php'); ?>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.nav-collapse -->
-        </div>
-    </div><!-- /navbar-inner -->
+            <ul class="nav pull-right">
+                <br />
+                <?php include ('accountInfo.php'); ?>
+            </ul>
+            </li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+    </div>
+</div><!-- /navbar-inner -->
 </div><!-- /navbar -->
 
 
@@ -44,20 +44,20 @@
 
                     <ul class="widget widget-menu unstyled">
                         <li class="active">
-                            <a href="panel.php">
+                            <a href="../panel.php">
                                 <i class="menu-icon icon-dashboard"></i>
                                 Lista eventów
                             </a>
                         </li>
 
                         <li>
-                            <a href="addevent.php">
+                            <a href="../addevent.php">
                                 <i class="menu-icon icon-tasks"></i>
                                 Dodaj event
                             </a>
                         </li>
                         <li>
-                            <a href="users/users.php">
+                            <a href="users.php">
                                 <i class="menu-icon icon-table"></i>
                                 Lista użytkowników
                             </a>
@@ -69,11 +69,11 @@
                                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                                 </i>Zarządzanie kontem </a>
                             <ul id="togglePages" class="collapse unstyled">
-                                <li><a href="users/changePassword.php"><i class="icon-inbox"></i>Zmień hasło </a></li>
+                                <li><a href="changePassword.php"><i class="icon-inbox"></i>Zmień hasło </a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="logout.php">
+                            <a href="../logout.php">
                                 <i class="menu-icon icon-signout"></i>
                                 Logout
                             </a>
@@ -90,7 +90,7 @@
                             <h3>Lista eventów</h3>
                         </div>
                         <div class="module-body">
-                           <?php include('list.php');?>
+                           Funkcja obecenie niedostępna
                         </div>
                     </div>
 
@@ -110,10 +110,10 @@
     </div>
 </div>
 
-<script src="scripts/jquery-1.9.1.min.js"></script>
-<script src="scripts/jquery-ui-1.10.1.custom.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="scripts/datatables/jquery.dataTables.js"></script>
+<script src="../scripts/jquery-1.9.1.min.js"></script>
+<script src="../scripts/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../scripts/datatables/jquery.dataTables.js"></script>
 <script>
     $(document).ready(function() {
         $('.datatable-1').dataTable();

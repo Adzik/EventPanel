@@ -34,6 +34,10 @@ class Authorization
     {
         $this -> _password = $password;
     }
+    public function setOlderPassword($oldPassword)
+    {
+        $this -> _oldPassword = $oldPassword;
+    }
     public function setSecondPassword($secondPassword)
     {
         $this -> _secondPassword = $secondPassword;
@@ -54,6 +58,10 @@ class Authorization
     public function getPassword()
     {
         return $this -> _password;
+    }
+    public function getOlderPassword()
+    {
+        return $this -> _oldPassword;
     }
     public function getSecondPassword()
     {
@@ -104,7 +112,8 @@ class Authorization
         {
             session_start();
             $_SESSION['logged'] = true;
-            $_SESSION['user_id'] = $row['Nick'];
+            $_SESSION['user_id'] = $row['ID'];
+            $_SESSION['user_nick'] = $row['Nick'];
             $_SESSION['active'] = $row['Aktywny'];
             ini_set('session.cookie_httponly', 1);
             return true;
@@ -136,6 +145,13 @@ class Authorization
      }
      $stmt -> closeCoursor();
 
+    }
+    public function ChangePassword()
+    {
+        $password = $this -> Hash();
+        $stmt = $this -> _dpdo->prepare('UPDATE users SET Password = :Password WHERE ID = :id');
+        $stmt -> bindValue(':id', $this -> getID(), PDO::PARAM_INT);
+        $stmt -> bindValue(':Password', $password, PDO::PARAM_STR);
     }
     public function RegisterUser()
     {
