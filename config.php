@@ -1,9 +1,9 @@
 <?php
 //Zmienne do bazy danych
-$db["Host"] = "localhost";
-$db["User"] = "wixa";
-$db["Password"] = "korba";
-$db["Name"] = "dsdobot";
+$db["Host"] = "";
+$db["User"] = "";
+$db["Password"] = "";
+$db["Name"] = "";
 
 function connect() {
 	global $pdo;
