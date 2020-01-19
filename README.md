@@ -1,6 +1,6 @@
 # EventPanel
 
-Aplikacja umożliwia tworzenie spisu wydarzeń i późniejsze parsowanie ich przy pomocy Json   
+Aplikacja napisana w języku PHP umożliwia tworzenie spisu wydarzeń i późniejsze parsowanie ich przy pomocy Json   
 W pliku `config.php` znajdują się zmienne wykorzystywane do łączenia się z bazą danych   
 Plik `eventpanel.sql` zawiera bazę danych do zaimportowania.
 
